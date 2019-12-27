@@ -74,6 +74,32 @@ li {
   margin: 10px;
 }
 
+.dashboard-selector {
+  max-width: 590px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px auto;
+}
+
+.dashboard-selector > button {
+  background-color: #697784;
+  color: #FFFFFF;
+  text-align: center;
+  flex-grow: 2;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.dashboard-selector > button:disabled {
+  background-color:#3c963c;
+}
+
+.question-list {
+  border: 1px solid red;
+  max-width: 620px;
+  margin: 10px auto
+}
+
 .question {
   width: 100%;
   max-width: 590px;
