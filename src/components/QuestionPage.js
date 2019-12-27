@@ -8,7 +8,7 @@ class QuestionPage extends Component {
     console.log('Id from QPage', id)
     return (
       <div>
-        <Question id={id} />
+        <Question id={id} submit={true}/>
       </div>
     )
   }

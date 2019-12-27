@@ -137,23 +137,7 @@ li {
   font-weight: bold;
   line-height: 2em;
 }
-.tweet-icons {
-  display: flex;
-  align-items: center;
-}
-.tweet-icons > span {
-  color: #969696;
-  margin: 0 15px 0 5px;
-  font-size: 18px !important;
-}
-.tweet-icon {
-  font-size: 27px;
-  color: #697784;
-}
-.tweet-icon:hover {
-  color: #00b5d6;
-  cursor: pointer;
-}
+
 .question-fragment {
   border: none;
   background: transparent;
@@ -163,9 +147,23 @@ li {
   cursor: pointer;
 }
 
-.heart-button {
-  background: transparent;
+.radio-buttons {
   border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-button-row {
+  display: flex;
+  padding: 5px 5px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.radio-label {
+  display: block;
+  font-size: 14px;
+  padding: 0 20px 0 10px;
 }
 
 .new-tweet {
