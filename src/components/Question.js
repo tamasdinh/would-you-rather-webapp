@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
 
 class Question extends Component {
   render() {
@@ -17,7 +18,9 @@ class Question extends Component {
           <div>
             <span>Would you rather</span>
             <p className='question-fragment'>...{optionOne.text}...</p>
-            <button className='btn'>View Poll</button>
+            <Link to={`/questions/${id}`}>
+              <button className='btn'>View Poll</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -35,4 +38,4 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
   }
 }
 
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question))

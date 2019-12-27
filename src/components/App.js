@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
-import { LoadingBar } from 'react-redux-loading'
+import LoadingBar from 'react-redux-loading'
 import Question from './Question'
 import Dashboard from './Dashboard'
+import NewQuestion from './NewQuestion'
+import Nav from './Nav'
+import { BrowserRouter, Route } from 'react-router-dom'
+import LeaderBoard from './LeaderBoard'
+import QuestionPage from './QuestionPage'
 
 class App extends Component {
 
@@ -13,13 +18,20 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <LoadingBar />
-        {this.props.loading === true
-        ? null
-        :
-        <Dashboard />}
-      </div>
+      <BrowserRouter>
+        <div>
+          <LoadingBar />
+          <Nav />
+          {this.props.loading === true
+          ? null
+          : <div>
+              <Route path='/' exact component={Dashboard} />
+              <Route path='/new' component={NewQuestion} />
+              <Route path='/questions/:id' component={QuestionPage} />
+              <Route path='/leaderboard' component={LeaderBoard} />
+            </div>}
+        </div>
+      </BrowserRouter>
     )
   }
 }
