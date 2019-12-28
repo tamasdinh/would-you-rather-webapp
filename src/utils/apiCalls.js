@@ -1,7 +1,8 @@
 import {
   _getUsers,
   _getQuestions,
-  _saveQuestionAnswer
+  _saveQuestionAnswer,
+  _saveQuestion
 } from './_DATA'
 
 export function getInitialData() {
@@ -21,4 +22,9 @@ export function saveAnswer({authedUser, qid, answer}) {
       qid,
       answer
     }))
+}
+
+export function saveQuestion(author, optionOneText, optionTwoText) {
+  return _saveQuestion({author, optionOneText, optionTwoText})
+    .then(formattedQuestion => formattedQuestion)
 }
