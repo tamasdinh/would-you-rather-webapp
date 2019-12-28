@@ -2,25 +2,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
 
-class QuestionPage extends Component {
+class QuestionSubmit extends Component {
   render() {
     const { id } = this.props
-    console.log('Id from QPage', id)
     return (
       <div>
-        <Question id={id} submit={true}/>
+        <Question id={id} dashboard={false} answered={false}/>
       </div>
     )
   }
 }
 
-function mapStateToProps({ authedUser }, props) {
+function mapStateToProps({}, props) {
   const { id } = props.match.params
 
   return {
-    authedUser,
     id
   }
 }
 
-export default connect(mapStateToProps)(QuestionPage)
+export default connect(mapStateToProps)(QuestionSubmit)

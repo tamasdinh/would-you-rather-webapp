@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
-import Question from './Question'
 import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
 import Nav from './Nav'
 import { BrowserRouter, Route } from 'react-router-dom'
 import LeaderBoard from './LeaderBoard'
-import QuestionPage from './QuestionPage'
+import QuestionSubmit from './QuestionSubmit'
+import QuestionResults from './QuestionResults'
 
 class App extends Component {
 
@@ -27,7 +27,8 @@ class App extends Component {
           : <div>
               <Route path='/' exact component={Dashboard} />
               <Route path='/new' component={NewQuestion} />
-              <Route path='/questions/:id' exact component={QuestionPage} />
+              <Route path='/questions/:id' exact component={QuestionSubmit} />
+              <Route path='/questions/:id/results' exact component={QuestionResults} />
               <Route path='/leaderboard' component={LeaderBoard} />
             </div>}
         </div>

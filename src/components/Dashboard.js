@@ -41,7 +41,11 @@ class Dashboard extends Component {
         <ul className='question-list'>
           {list.map(id => (
               <li key={id}>
-              <Question id={id} submit={false}/>
+              <Question
+                id={id}
+                dashboard={true}
+                answered={this.state.showAnswered}
+              />
             </li>
           ))}
         </ul>
