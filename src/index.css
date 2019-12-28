@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  /* border: 1px solid red */
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -133,7 +138,7 @@ li {
 }
 
 /* Hacky but less typing in the video */
-.question-info > div > span {
+.question-info span {
   font-weight: bold;
   line-height: 2em;
 }
@@ -187,4 +192,49 @@ li {
   margin-top: 10px;
   font-size: 20px;
   color: #C3392A;
+}
+
+
+/* ResultsBox styles */
+
+.results-box {
+  width: 90%;
+  border: 1px solid #dad7d7;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 10px;
+  cursor: default
+}
+
+.results-box.selected {
+  border: 1px solid #00b5d6;
+  background-color: #def0f3;
+  color: #0294ad
+}
+
+.results-box.selected > div:first-of-type {
+  position: relative;
+  max-height: 0em;
+}
+
+.results-bar-total {
+  background-color: #dad7d7;
+}
+
+.results-bar-actual {
+  background-color: #00b5d6;
+  padding: 0.5em;
+  text-align: right;
+  color: #FFFFFF;
+}
+
+.ratio-text {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.your-pick {
+  position: relative;
+  width: 15%;
+  right: -95%;
 }
