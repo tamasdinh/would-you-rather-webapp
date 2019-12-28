@@ -57,10 +57,14 @@ class Dashboard extends Component {
 function mapStateToProps({ authedUser, questions }) {
   return {
     answered: Object.values(questions)
-    .filter(q => q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser)).map(q => q.id),
+    .filter(q => q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser))
+    .map(q => q.id)
+    .sort((a, b) => questions[b].timestamp - questions[a].timestamp),
 
     unanswered: Object.values(questions)
-    .filter(q => !q.optionOne.votes.includes(authedUser) && !q.optionTwo.votes.includes(authedUser)).map(q => q.id)
+    .filter(q => !q.optionOne.votes.includes(authedUser) && !q.optionTwo.votes.includes(authedUser))
+    .map(q => q.id)
+    .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
   }
 }
 
