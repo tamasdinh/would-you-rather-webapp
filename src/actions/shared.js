@@ -1,6 +1,6 @@
-import { getInitialData } from '../utils/apiCalls'
-import { getUsers } from './users'
-import { getQuestions } from './questions'
+import { getInitialData, saveAnswer } from '../utils/apiCalls'
+import { getUsers, answerUser } from './users'
+import { getQuestions, answerQuestion } from './questions'
 import { setAuthedUser } from './authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
@@ -15,6 +15,25 @@ export function handleInitialData() {
       dispatch(getQuestions(questions))
       dispatch(setAuthedUser(AUTHED_ID))
       dispatch(hideLoading())
+    })
+  }
+}
+
+export function handleAnswerQuestion(qid, answer) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+    return saveAnswer({
+      authedUser,
+      qid,
+      answer
+    })
+    .then(() => {
+      dispatch(answerUser(authedUser, qid, answer))
+      dispatch(answerQuestion(authedUser, qid, answer))
+    })
+    .catch(e => {
+      console.warn('Error w/ saving answer to question!', e)
+      alert('Unfortunately there was an error while saving your answer to the question. Please try again later.')
     })
   }
 }
