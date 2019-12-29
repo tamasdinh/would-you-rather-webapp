@@ -251,11 +251,6 @@ li {
   color: #0294ad
 }
 
-.results-box.selected > div:first-of-type {
-  position: relative;
-  max-height: 0em;
-}
-
 .results-bar-total {
   background-color: #dad7d7;
 }
@@ -270,12 +265,6 @@ li {
 .ratio-text {
   text-align: center;
   font-size: 0.8em;
-}
-
-.your-pick {
-  position: relative;
-  width: 15%;
-  right: -95%;
 }
 
 

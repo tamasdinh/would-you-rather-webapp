@@ -7,11 +7,6 @@ export default class ResultsBox extends Component {
     const classes = (selected.text === option.text) ? 'results-box selected' : 'results-box'
     return (
       <div className={classes}>
-        <div>
-          {(selected.text === option.text) &&
-            <img className='your-pick' src='http://m.maaii.com/assets/images/ok.png' />
-          }     
-        </div>
         <p><strong>Would you rather {option.text}?</strong></p>
         <div className='results-bar-total'>
           <div
