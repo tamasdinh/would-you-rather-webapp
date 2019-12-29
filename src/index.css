@@ -100,7 +100,8 @@ li {
 }
 
 .question-list {
-  border: 1px solid red;
+  border: 1px solid #dad7d7;
+  border-radius: 10px;
   max-width: 620px;
   margin: 10px auto
 }
@@ -127,10 +128,48 @@ li {
   border-radius: 3px;
 }
 
+.question > div {
+  text-align: center;
+}
+
+.total-score-box {
+  width: 50%;
+  max-width: 150px;
+  padding: 0 0 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+}
+
+.total-score {
+  margin: auto;
+  background-color: #00b5d6;
+  color: #FFFFFF;
+  font-weight: bold;
+  border-radius: 100px;
+  padding: 10px 15px;
+}
+
 .question-info {
   margin: 10px;
   display: flex;
   justify-content: space-evenly;
+}
+
+.card-text {
+  width: 20vw;
+}
+
+.score-text {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1.5;
+}
+
+.score-text p:last-of-type {
+  font-weight: bold;
 }
 
 .divider-line {
