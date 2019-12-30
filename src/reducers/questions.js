@@ -31,6 +31,7 @@ export default function questions (state = {}, action) {
           }
         }
       }
+      break
     case ADD_QUESTION:
       return {
         ...state,

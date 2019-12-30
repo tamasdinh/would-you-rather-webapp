@@ -33,6 +33,7 @@ function mapStateToProps({ authedUser, users }) {
   users.map(user => {
     user.answerScore = Object.keys(user.answers).length
     user.createdScore = user.questions.length
+    return null
   })
   let userList = []
   for (let user of users) {

@@ -21,7 +21,7 @@ class Question extends Component {
   }
 
   render() {
-    const { id, author, timestamp, optionOne, optionTwo } = this.props.question
+    const { id, author, optionOne, optionTwo } = this.props.question
     const { users, dashboard, answered } = this.props
     return (
       <div className='question'>
@@ -30,6 +30,7 @@ class Question extends Component {
           <img
             className='avatar'
             src={users[author].avatarURL}
+            alt=''
           />
           <div className='divider-line'></div>
           <div>

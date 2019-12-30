@@ -29,7 +29,7 @@ class Login extends Component {
             id={user.id}
             onClick={this.setAuthedUser}>
                 <div className='user-card'>
-                  <img className='avatar' src={user.avatarURL}/>
+                  <img className='avatar' src={user.avatarURL} alt=''/>
                   <span>{user.name}</span>
                 </div>
             </li>

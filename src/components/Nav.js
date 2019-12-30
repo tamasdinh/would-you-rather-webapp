@@ -33,7 +33,7 @@ class Nav extends Component {
         {userName &&
           <div className='authed-user-greeting'>
             <p>Hello, {userName}</p>
-            <img src={avatarURL}/>
+            <img src={avatarURL} alt=''/>
             <button onClick={this.handleLogout}>Logout</button>
           </div>
         }

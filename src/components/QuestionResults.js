@@ -23,6 +23,7 @@ class QuestionResults extends Component {
           <img
             className='avatar'
             src={avatarUrl}
+            alt=''
           />
           <div className='divider-line'></div>
           <div>
@@ -47,9 +48,14 @@ class QuestionResults extends Component {
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { id } = props.match.params
   const question = questions[id]
-  const selected = question.optionOne.votes.includes(authedUser) && questions[id].optionOne ||
-                    question.optionTwo.votes.includes(authedUser) && questions[id].optionTwo ||
-                    ''
+  let selected
+  if (question.optionOne.votes.includes(authedUser)) {
+    selected = questions[id].optionOne
+  } else if (question.optionTwo.votes.includes(authedUser)) {
+     selected = questions[id].optionTwo
+  } else {
+    selected = ''
+  }
   const avatarUrl = users[question.author].avatarURL
   const authorName = users[question.author].name
 

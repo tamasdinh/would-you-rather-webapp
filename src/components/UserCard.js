@@ -9,6 +9,7 @@ class UserCard extends Component {
           <img
             className='avatar'
             src={avatarURL}
+            alt=''
           />
           <div className='divider-line'></div>
           <div className='card-text'>
