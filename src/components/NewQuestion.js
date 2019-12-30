@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/shared'
+import loginGuard from './loginGuard'
 
 class NewQuestion extends Component {
+    
+  componentDidMount() {
+    loginGuard(this, true)
+  }
+  
+  componentDidUpdate() {
+    loginGuard(this, false)
+  }
 
   submitQuestion = () => {
     const optionOne = document.getElementById('optionOne').value
@@ -39,4 +48,10 @@ class NewQuestion extends Component {
   }
 }
 
-export default connect()(NewQuestion)
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(NewQuestion)

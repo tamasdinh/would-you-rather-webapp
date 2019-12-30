@@ -4,8 +4,7 @@ import { getQuestions, answerQuestion, addQuestionQuestion } from './questions'
 import { setAuthedUser } from './authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-const AUTHED_ID = 'tylermcginnis'
-// TODO: implement proper authentication
+const AUTHED_ID = ''
 
 export function handleInitialData() {
   return (dispatch) => {

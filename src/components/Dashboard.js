@@ -1,11 +1,20 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import loginGuard from './loginGuard'
 
 class Dashboard extends Component {
 
   state = {
     showAnswered: false
+  }
+  
+  componentDidMount() {
+    loginGuard(this, true)
+  }
+  
+  componentDidUpdate() {
+    loginGuard(this, false)
   }
 
   toggleAnswered = () => {
@@ -56,6 +65,7 @@ class Dashboard extends Component {
 
 function mapStateToProps({ authedUser, questions }) {
   return {
+    authedUser,
     answered: Object.values(questions)
     .filter(q => q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser))
     .map(q => q.id)

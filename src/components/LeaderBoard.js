@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import UserCard from './UserCard'
+import loginGuard from './loginGuard'
 
 class LeaderBoard extends Component {
+  
+  componentDidMount() {
+    loginGuard(this, true)
+  }
+  
+  componentDidUpdate() {
+    loginGuard(this, false)
+  }
   
   render() {
     const { userList } = this.props

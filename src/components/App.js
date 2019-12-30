@@ -9,6 +9,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import LeaderBoard from './LeaderBoard'
 import QuestionSubmit from './QuestionSubmit'
 import QuestionResults from './QuestionResults'
+import Login from './Login'
 
 class App extends Component {
 
@@ -21,10 +22,14 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <LoadingBar />
-          <Nav />
+          <Nav
+            userName={this.props.userName}
+            avatarURL={this.props.avatarURL}
+          />
           {this.props.loading === true
           ? null
           : <div>
+              <Route path='/login' exact component={Login} />
               <Route path='/' exact component={Dashboard} />
               <Route path='/new' component={NewQuestion} />
               <Route path='/questions/:id' exact component={QuestionSubmit} />
@@ -37,9 +42,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    userName: authedUser ? users[authedUser].name : null,
+    avatarURL: authedUser ? users[authedUser].avatarURL : null
   }
 }
 

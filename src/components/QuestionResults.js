@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ResultsBox from './ResultsBox'
+import loginGuard from './loginGuard'
 
 class QuestionResults extends Component {
+    
+  componentDidMount() {
+    loginGuard(this, true)
+  }
+  
+  componentDidUpdate() {
+    loginGuard(this, false)
+  }
+
   render() {
     const { authorName, avatarUrl, question, selected } = this.props
     const noVotes = question.optionOne.votes.length + question.optionTwo.votes.length
@@ -37,13 +47,14 @@ class QuestionResults extends Component {
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { id } = props.match.params
   const question = questions[id]
-  const selected = question.optionOne.votes.includes(authedUser)
-    ? question.optionOne
-    : question.optionTwo
+  const selected = question.optionOne.votes.includes(authedUser) && questions[id].optionOne ||
+                    question.optionTwo.votes.includes(authedUser) && questions[id].optionTwo ||
+                    ''
   const avatarUrl = users[question.author].avatarURL
   const authorName = users[question.author].name
 
   return {
+    authedUser,
     authorName,
     avatarUrl,
     question,
