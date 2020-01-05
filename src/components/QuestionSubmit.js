@@ -1,16 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
-import loginGuard from './loginGuard'
 
 class QuestionSubmit extends Component {
-    
-  componentDidMount() {
-    loginGuard(this, true)
-  }
   
   componentDidUpdate() {
-    loginGuard(this, false)
+    if (!this.props.authedUser) {
+      window.location.reload()
+    }
   }
 
   render() {

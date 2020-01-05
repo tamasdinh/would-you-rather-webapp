@@ -5,7 +5,6 @@ export default class ResultsBox extends Component {
     const { selected, noVotes, option } = this.props
     const resultsRatio = option.votes.length / noVotes
     let classes = 'results-box'
-    console.log('Selected:',selected)
     if (selected) {
       classes += ' '
       classes += (selected.text === option.text) ? 'selected' : ''

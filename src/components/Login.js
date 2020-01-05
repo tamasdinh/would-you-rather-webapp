@@ -26,9 +26,8 @@ class Login extends Component {
           {users.map(user => (
             <li
             key={user.id}
-            id={user.id}
-            onClick={this.setAuthedUser}>
-                <div className='user-card'>
+            >
+                <div className='user-card' onClick={this.setAuthedUser} id={user.id}>
                   <img className='avatar' src={user.avatarURL} alt=''/>
                   <span>{user.name}</span>
                 </div>

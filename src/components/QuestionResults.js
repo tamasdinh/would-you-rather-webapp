@@ -1,19 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import ResultsBox from './ResultsBox'
-import loginGuard from './loginGuard'
 
 class QuestionResults extends Component {
-    
-  componentDidMount() {
-    loginGuard(this, true)
-  }
   
   componentDidUpdate() {
-    loginGuard(this, false)
+    if (!this.props.authedUser) {
+      window.location.reload()
+    }
   }
 
   render() {
+    const { doesExist } = this.props
+    if (!doesExist) {
+      return (
+        <Fragment>
+          <h3>HTTP 404 Error</h3>
+          <p>The requested resource was not found in the database.</p>
+        </Fragment>
+      )
+    }
     const { authorName, avatarUrl, question, selected } = this.props
     const noVotes = question.optionOne.votes.length + question.optionTwo.votes.length
     return (
@@ -48,23 +54,25 @@ class QuestionResults extends Component {
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { id } = props.match.params
   const question = questions[id]
+  const doesExist = questions[id] ? true : false
   let selected
-  if (question.optionOne.votes.includes(authedUser)) {
+  if (question && question.optionOne.votes.includes(authedUser)) {
     selected = questions[id].optionOne
-  } else if (question.optionTwo.votes.includes(authedUser)) {
+  } else if (question && question.optionTwo.votes.includes(authedUser)) {
      selected = questions[id].optionTwo
   } else {
     selected = ''
   }
-  const avatarUrl = users[question.author].avatarURL
-  const authorName = users[question.author].name
+  const avatarUrl = question ? users[question.author].avatarURL : null
+  const authorName = question ? users[question.author].name: null
 
   return {
     authedUser,
     authorName,
     avatarUrl,
     question,
-    selected
+    selected,
+    doesExist
   }
 }
 
