@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class UserCard extends Component {
-  render() {
-    const { name, avatarURL, answerScore, createdScore, totalScore } = this.props.user
+export default function UserCard (props) {
+    const { name, avatarURL, answerScore, createdScore, totalScore } = props.user
     return (
       <div className='question'>
         <div className='question-info'>
@@ -33,6 +32,3 @@ class UserCard extends Component {
       </div>
     )
   }
-}
-
-export default UserCard
